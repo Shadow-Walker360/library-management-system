@@ -16,6 +16,7 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String
+  password  String
   role      Role     @default(PATRON)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -36,9 +37,11 @@ model Book {
   title           String
   author          String
   isbn            String   @unique
-  publishedYear   Int
+  publishedYear   Int?
   description     String?
-  copiesAvailable Int      @default(1)
+  coverImage      String?
+  totalCopies     Int      @default(1)
+  availableCopies Int      @default(1)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
